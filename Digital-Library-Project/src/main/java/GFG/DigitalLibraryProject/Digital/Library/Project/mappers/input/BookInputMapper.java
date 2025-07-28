@@ -17,7 +17,6 @@ public class BookInputMapper {
                  .description(inputEntity.getDescription())
                  .publishedData(inputEntity.getPublishedDate())
                  .createdAt(Instant.now())
-                 .updatedAt(Instant.now())
                  .build();
      }
 }

@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/book")
@@ -30,6 +29,30 @@ public class BookController {
     {
         return new ResponseEntity<>(this.bookAdapter.save(book), HttpStatus.CREATED);
 
+    }
+    @GetMapping("/getBookById/{bookId}")
+    public BookModel getBookById(@PathVariable long bookId)
+    {
+        BookModel book=bookAdapter.getBookById(bookId);
+        return book;
+    }
+    @PutMapping("/update")
+    public ResponseEntity<?> updateBook(@Valid @RequestBody BookInputEntity book)
+    {
+        return new ResponseEntity<>(this.bookAdapter.update(book),HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllBooks")
+    public List<BookModel> getAllBooks()
+    {
+        List<BookModel> list=this.bookAdapter.getAllBooks();
+        return list;
+    }
+
+    @DeleteMapping("/deleteBook/{id}")
+    public void deleteBookById(@PathVariable long id)
+    {
+        this.bookAdapter.deleteBookById(id);
     }
 
 }
