@@ -1,6 +1,9 @@
 package GFG.DigitalLibraryProject.Digital.Library.Project.entity.input;
 
+import GFG.DigitalLibraryProject.Digital.Library.Project.enums.UserRole;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.With;
@@ -22,7 +25,16 @@ public class UserInputEntity {
 
 
     private LocalDate dob;
+
     private String number;
+
     @NotBlank(message = "Email is mandatory")
     private String email;
+
+    @Size(min=5)
+    private String password;
+
+    @Builder.Default
+    private UserRole role = UserRole.USER;
+
 }

@@ -11,11 +11,13 @@ public class UserOutputMapper {
     {
         return UserModel.builder()
                 .id(userOutputEntity.getId())
+                .password(userOutputEntity.getPassword())
                 .firstName(userOutputEntity.getFirstName())
                 .lastName(userOutputEntity.getLastName())
                 .dob(userOutputEntity.getDob())
                 .email(userOutputEntity.getEmail())
                 .number(userOutputEntity.getNumber())
+                .role(userOutputEntity.getRole())
                 .build();
     }
 
@@ -23,11 +25,13 @@ public class UserOutputMapper {
     {
         return UserOutputEntity.builder()
                 .id(userModel.getId())
+                .password(userModel.getPassword())
                 .firstName(userModel.getFirstName())
                 .lastName(userModel.getLastName())
                 .dob(userModel.getDob())
                 .email(userModel.getEmail())
                 .number(userModel.getNumber())
+                .role(userModel.getRole())
                 .build();
     }
 }

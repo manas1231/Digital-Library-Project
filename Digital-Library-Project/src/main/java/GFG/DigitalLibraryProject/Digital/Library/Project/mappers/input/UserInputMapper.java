@@ -11,11 +11,13 @@ public class UserInputMapper {
     {
         return UserModel.builder()
                 .id(userInputEntity.getId())
+                .password(userInputEntity.getPassword())
                 .firstName(userInputEntity.getFirstName())
                 .lastName(userInputEntity.getLastName())
                 .dob(userInputEntity.getDob())
                 .email(userInputEntity.getEmail())
                 .number(userInputEntity.getNumber())
+                .role(userInputEntity.getRole())
                 .build();
     }
 }

@@ -7,6 +7,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +52,19 @@ public class UserRepository {
         }
         return finalList;
     }
+    public UserModel findUserByEmail(String email)
+    {
+        Optional<UserOutputEntity> optional=this.userJPARepository.findByEmail(email);
+        if(optional.isPresent())
+        {
+            return userOutputMapper.mapToModel(optional.get());
+        }
+        else
+        {
+            throw  new RuntimeException("User with given Email not found");
+        }
 
+    }
     public void deleteUserById(long id) {
         this.userJPARepository.deleteById(id);
     }

@@ -2,7 +2,6 @@ package GFG.DigitalLibraryProject.Digital.Library.Project.adapter;
 
 import GFG.DigitalLibraryProject.Digital.Library.Project.commons.CommonAdapter;
 import GFG.DigitalLibraryProject.Digital.Library.Project.entity.input.UserInputEntity;
-import GFG.DigitalLibraryProject.Digital.Library.Project.entity.output.UserOutputEntity;
 import GFG.DigitalLibraryProject.Digital.Library.Project.mappers.input.UserInputMapper;
 import GFG.DigitalLibraryProject.Digital.Library.Project.model.UserModel;
 import GFG.DigitalLibraryProject.Digital.Library.Project.service.UserService;
@@ -34,15 +33,18 @@ public class UserAdapter implements CommonAdapter<UserInputEntity, UserModel> {
         return null;
     }
 
+
     public UserModel findUserById(long id)
     {
         return userService.findUserById(id);
     }
 
+
     public List<UserModel> getAllUsers()
     {
         return this.userService.getAllUsers();
     }
+
 
     public void deleteUserById(long id) {
         this.userService.deleteUserById(id);

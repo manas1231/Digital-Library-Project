@@ -26,7 +26,6 @@ public class BookAdapter implements CommonAdapter<BookInputEntity,BookModel> {
     public BookModel save(BookInputEntity bookInputEntity)
     {
         BookModel bookModel=bookInputMapper.mapToModel(bookInputEntity);
-        System.out.println(bookModel);
         return bookService.addBook(bookModel);
     }
     public BookModel getBookById(long id)

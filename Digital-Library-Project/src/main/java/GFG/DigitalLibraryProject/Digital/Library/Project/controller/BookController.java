@@ -1,7 +1,9 @@
 package GFG.DigitalLibraryProject.Digital.Library.Project.controller;
 
 import GFG.DigitalLibraryProject.Digital.Library.Project.adapter.BookAdapter;
+import GFG.DigitalLibraryProject.Digital.Library.Project.commons.CommonAdapter;
 import GFG.DigitalLibraryProject.Digital.Library.Project.entity.input.BookInputEntity;
+import GFG.DigitalLibraryProject.Digital.Library.Project.exceptions.ResourceNotFoundException;
 import GFG.DigitalLibraryProject.Digital.Library.Project.model.BookModel;
 import GFG.DigitalLibraryProject.Digital.Library.Project.service.BookService;
 import jakarta.validation.Valid;
@@ -39,7 +41,13 @@ public class BookController {
     @PutMapping("/update")
     public ResponseEntity<?> updateBook(@Valid @RequestBody BookInputEntity book)
     {
-        return new ResponseEntity<>(this.bookAdapter.update(book),HttpStatus.OK);
+        try{
+            return new ResponseEntity<>(this.bookAdapter.update(book),HttpStatus.OK);
+        }catch (ResourceNotFoundException e)
+        {
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @GetMapping("/getAllBooks")
